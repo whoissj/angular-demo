@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="app">
+<head>
+    <meta charset="UTF-8">
+    <title>angular</title>
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.css">
+</head>
+<body>
+<div ng-controller="firstCtrl">
+    <input type="text" ng-model="typing">
+    <div class="{{typing}}">{{typing}}</div>
+</div>
+
+<script src="node_modules/angular/angular.js"></script>
+<script src="index.js"></script>
+</body>
+</html>

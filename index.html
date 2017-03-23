@@ -23,6 +23,41 @@
     <input type="text" ng-model="data.message">
     <div class="panel panel-heading">{{data.message}}</div>
 </div>
+<div ng-controller="filterCtrl" class="panel panel-info">
+    <h4>过滤器</h4>
+    <input type="text" ng-model="data.message">
+    <div class="panel panel-heading">{{data.message|reverse}}</div>
+</div>
+
+
+<div ng-controller="stnCtrl" class="panel panel-primary">
+    <h4>过滤器进阶</h4>
+    <label>按姓名</label><input type="text" ng-model="search.name"><br/>
+    <label>按年龄</label><input type="text" ng-model="search.age"><br/>
+    <label>按年纪</label><input type="text" ng-model="search.grade"><br/>
+    <label>按城市</label><input type="text" ng-model="search.city"><br/>
+    <label>按学校</label><input type="text" ng-model="search.school"><br/>
+    <table class="table table-bordered">
+        <tr>
+            <td width="20%" ng-repeat="label in labels" ng-click="sort.orderTurn(label.name)">
+                {{label.label}}
+                <i class="glyphicon {{sort.icon}}" ng-if="sort.order === label.name"></i>
+            </td>
+        </tr>
+        <!--orderBy可以有两个参数，第一个参数是字符串，对应repeat对象的属性名称；
+        第二参数是布尔值，true表示反序，false表示正序，可以不写，默认为false。-->
+        <tr ng-repeat="student in students|orderBy:sort.order:sort.direction|filter:search">
+            <td>{{student.name}}</td>
+            <td>{{student.age}}</td>
+            <td>{{student.grade}}</td>
+            <td>{{student.city|uppercase}}</td>
+            <td>{{student.school}}</td>
+        </tr>
+    </table>
+</div>
+
+
+
 <script src="node_modules/angular/angular.js"></script>
 <script src="index.js"></script>
 </body>

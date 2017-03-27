@@ -12,4 +12,9 @@ app.config(['$stateProvider','$urlRouterProvider','$locationProvider',function (
             templateUrl:'tpls/login/login.html',
             controller:'LoginCtrl as vm'
         })
+        .state('register',{
+            url:'/register',
+            templateUrl:'tpls/register/register.html',
+            controller:'RegisterCtrl as vm'
+        })
 }]);

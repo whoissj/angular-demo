@@ -1,0 +1,22 @@
+<form name="form" ng-submit="vm.submit(vm.form)" class="panel panel-default" novalidate="novalidate">
+    <div class="panel-body">
+        <label for="_email">邮箱</label>
+        <input id="_email" name="email" type="email" ng-model="vm.form.email" ng-required="true">
+    </div>
+    <div class="panel-body">
+        <label for="_nickname">昵称</label>
+        <input id="_nickname" name="nickname" type="text" ng-model="vm.form.nickname" ng-required="true">
+    </div>
+    <div class="panel-body">
+        <label for="_password">密码</label>
+        <input id="_password" name="password" type="password" ng-model="vm.form.password" ng-required="true">
+    </div>
+    <div class="panel-body">
+        <label for="_retypedPassword">确认密码</label>
+        <input id="_retypedPassword" name="retypedPassword" type="password" ng-model="vm.retypedPassword" ng-required="true">
+    </div>
+    <div>
+        <button class="btn btn-primary" type="submit">提交</button>
+        <button class="btn btn-info" ng-click="vm.goBack()">返回</button>
+    </div>
+</form>

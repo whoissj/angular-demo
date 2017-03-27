@@ -5,6 +5,7 @@ function ($state,$rootScope,$cookies) {
     $rootScope.isLogin = function () {
        return !!$cookies.get('isLogin')
     };
+    /*这个事件是在模板解析之前触发*/
     $rootScope.$on('$stateChangeStart',
         function(event, toState, toParams, fromState, fromParams, options){
             if(!$rootScope.isLogin()&& toState.url !=='/login') {

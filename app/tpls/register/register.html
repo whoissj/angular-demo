@@ -1,22 +1,45 @@
-<form name="form" ng-submit="vm.submit(vm.form)" class="panel panel-default" novalidate="novalidate">
-    <div class="panel-body">
-        <label for="_email">邮箱</label>
-        <input id="_email" name="email" type="email" ng-model="vm.form.email" ng-required="true">
-    </div>
-    <div class="panel-body">
-        <label for="_nickname">昵称</label>
-        <input id="_nickname" name="nickname" type="text" ng-model="vm.form.nickname" ng-required="true">
-    </div>
-    <div class="panel-body">
-        <label for="_password">密码</label>
-        <input id="_password" name="password" type="password" ng-model="vm.form.password" ng-required="true">
-    </div>
-    <div class="panel-body">
-        <label for="_retypedPassword">确认密码</label>
-        <input id="_retypedPassword" name="retypedPassword" type="password" ng-model="vm.retypedPassword" ng-required="true">
-    </div>
-    <div>
-        <button class="btn btn-primary" type="submit">提交</button>
-        <button class="btn btn-info" ng-click="vm.goBack()">返回</button>
-    </div>
-</form>
+<div class="panel panel-primary container" id="register">
+    <div class="panel-heading row">用户注册</div>
+    <form class="panel-body form-horizontal" name="form" ng-submit="vm.submit(vm.form)" novalidate="novalidate">
+        <div class="form-group row">
+            <label class="col-xs-4 col-sm-3 control-label" for="_email">email:</label>
+            <div class="col-xs-8 col-sm-8">
+                <input class="form-control" bf-field-error id="_email" name="email" type="email" ng-model="vm.form.email" ng-model-options="{updateOn:'blur'}" required>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-xs-4 col-sm-3 control-label" for="_nickname">nickname:</label>
+            <div class="col-xs-8 col-sm-8">
+                <input class="form-control" bf-field-error id="_nickname" name="nickname" type="text" ng-model="vm.form.nickname" ng-model-options="{updateOn:'blur'}" required>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-xs-4 col-sm-3 control-label" for="_password">password:</label>
+            <div class="col-xs-8 col-sm-8">
+                <input class="form-control" bf-field-error id="_password" name="password" type="password" ng-model="vm.form.password" ng-model-options="{debounce:500}" required>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-xs-4 col-sm-3 control-label" for="_retypedPassword">confirmPassword:</label>
+            <div class="col-xs-8 col-sm-8">
+                <input class="form-control" bf-field-error="{same:'确认密码必须与密码相同'}" bf-asset-same-as="vm.form.password"
+                       id="_retypedPassword" name="retypedPassword" type="password" ng-model="vm.retypedPassword" ng-model-options="{debounce:500}" required>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-xs-offset-4 col-sm-offset-3 container">
+                <input id="accept" type="checkbox" name="accept" ng-model="vm.accept" bf-asset-same-as='true'>
+                <label for="accept">
+                   I agree
+                </label>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-xs-offset-4 col-sm-offset-3 container">
+                <button class="btn btn-primary" type="submit" ng-disabled="form.$invalid">提交</button>
+                <button class="btn btn-info" ng-click="vm.goBack()">返回</button>
+            </div>
+        </div>
+        <!--<div class="alert alert-danger" ng-if="form.email.$invalid&&form.email.$touched">输入错误</div>-->
+    </form>
+</div>

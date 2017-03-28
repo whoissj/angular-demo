@@ -1,5 +1,8 @@
-<div class="panel panel-danger">
-    <div class="panel-heading">{{vm.home.header}}</div>
-    <div class="panel-body" ng-bind="vm.home.body"></div>
+<div class="container" id="home">
+    <div class="panel panel-danger">
+        <div class="panel-heading clearfix">{{vm.home.header}} <button class="btn btn-warning btn-xs pull-right" ng-click="vm.logout()">退出</button></div>
+        <div class="panel-body">{{vm.home.body}} <button class="btn btn-warning btn-xs pull-right" ng-click="vm.goDeep()">进入</button></div>
+    </div>
+
 </div>
-<input class="btn btn-primary" type="text" value="退出" ng-click="vm.logout()">
+

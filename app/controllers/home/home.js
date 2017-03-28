@@ -8,5 +8,8 @@ app.controller('HomeCtrl',['$scope','$cookies','$rootScope','$state',function ($
     vm.logout = function () {
         $cookies.remove('isLogin');
         $state.go('login');
+    };
+    vm.goDeep = function () {
+        $state.go('thread.list')
     }
 }]);

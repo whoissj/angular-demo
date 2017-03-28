@@ -1,7 +1,22 @@
-<div class="panel  panel-heading">
-    <div class="panel-body"><label for="login">account:</label><input type="text" id="login" ng-model="vm.account"></div>
-    <div class="panel-body"><label for="passwd">password:</label><input type="password" id="passwd"></div>
-    <input class="btn btn btn-primary" type="button" value="登录" ng-click="vm.login()">
-    <input class="btn btn btn-info" type="button" value="注册" ng-click="vm.goRegister()">
+<div class="container panel panel-primary" id="userLogin">
+    <div class="panel-heading row">用户登录</div>
+    <form name="loginForm" class="panel-body form-horizontal">
+        <div class="form-group row">
+            <label class="col-xs-2 control-label" for="login">account:</label>
+            <div class="col-xs-8">
+                <input class="form-control" type="text" id="login" ng-model="vm.account" required>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-xs-2 control-label" for="passwd">password:</label>
+            <div class="col-xs-8">
+                <input class="form-control" type="password" id="passwd" ng-model="vm.password" required>
+            </div>
+        </div>
+        <div class="col-xs-offset-2">
+            <input  class="btn btn-primary" type="submit" value="登录" ng-click="vm.login()" ng-disabled="loginForm.$invalid">
+            <input  class="btn btn-info" type="button" value="注册" ng-click="vm.goRegister()">
+        </div>
+    </form>
 </div>
 

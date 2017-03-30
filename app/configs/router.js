@@ -27,4 +27,9 @@ app.config(['$stateProvider','$urlRouterProvider','$locationProvider',function (
             templateUrl:'tpls/thread/list.html',
             controller:'ThreadListCtrl as vm'
         })
+        .state('thread.tree',{
+            url:'/tree',
+            templateUrl:'tpls/thread/tree.html',
+            controller:'ThreadTreeCtrl as vm'
+        })
 }]);

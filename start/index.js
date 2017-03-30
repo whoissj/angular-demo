@@ -59,17 +59,12 @@ app.controller('stnCtrl',function ($scope,students,labels) {
             icon:'glyphicon-triangle-bottom',
             orderTurn:function (labelname) {
                 if(labelname === this.order) {
-                    this.direction = !this.direction||false;
-                    if(this.direction) {
-                        this.icon = 'glyphicon-triangle-top';
-                    }else {
-                        this.icon = 'glyphicon-triangle-bottom';
-                    }
+                    this.direction = !this.direction;
                 }else {
                     this.order = labelname;
                     this.direction = false;
-                    this.icon = 'glyphicon-triangle-bottom';
                 }
+                this.icon = this.direction?'glyphicon-triangle-bottom':'glyphicon-triangle-top';
             }
         };
 });

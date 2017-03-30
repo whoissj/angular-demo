@@ -4,7 +4,7 @@
             <div class="row">
                 <label class="control-label col-xs-2">筛选</label>
                 <div class="col-xs-8">
-                    <input type="text" class="form-control" ng-model="vm.filter.$">
+                    <input type="text" class="form-control" ng-model="vm.search.$">
                 </div>
             </div>
         </div>
@@ -12,15 +12,37 @@
     <table class="table table-hover table-striped table-bordered">
         <thead>
          <tr>
-             <th ng-repeat="label in vm.labels">{{label.label}}</th>
+             <th ng-repeat="label in vm.labels" ng-click="vm.filter.toggle(label.name)">
+                 {{label.label}}
+                 <i class="glyphicon {{vm.filter.icon}}" ng-if="label.name === vm.filter.order"></i>
+             </th>
          </tr>
         </thead>
         <tbody>
-        <tr ng-repeat="item in vm.items|filter:vm.filter">
+        <tr ng-repeat="item in vm.items|filter:vm.search|orderBy:vm.filter.order:vm.filter.direction|page:vm.paging.page:vm.paging.pageSize">
             <td>{{item.title}}</td>
             <td>{{item.poster}}</td>
-            <td>{{item.dateCreated}}</td>
+            <td>{{item.dateCreated|date:'yyyy-MM-dd'}}</td>
         </tr>
         </tbody>
     </table>
+    <form class="panel panel-default form-horizontal">
+        <div class="panel-heading">
+            <div class="form-group">
+                <label class="control-label col-xs-2">总数：{{vm.total}}</label>
+            </div>
+            <div class="row form-group">
+                <label class="control-label col-xs-2">第几页</label>
+                <div class="col-xs-8">
+                    <input type="number" class="form-control" ng-model="vm.paging.page">
+                </div>
+            </div>
+            <div class="row">
+                <label class="control-label col-xs-2">每页数量</label>
+                <div class="col-xs-8">
+                    <input type="number" class="form-control" ng-model="vm.paging.pageSize">
+                </div>
+            </div>
+        </div>
+    </form>
 </div>

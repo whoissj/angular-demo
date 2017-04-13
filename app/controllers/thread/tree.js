@@ -1,5 +1,5 @@
 'use strict';
-app.controller('ThreadTreeCtrl',function ($scope,treeService) {
+app.controller('ThreadTreeCtrl',function ($scope,$timeout,$q,treeService,hello) {
     var vm = this;
     vm.items = [
         {
@@ -57,5 +57,23 @@ app.controller('ThreadTreeCtrl',function ($scope,treeService) {
             dateCreated: '2015-02-19T15:00:00'
         }
     ];
-    console.log(vm.items)
+
+    var message =  hello.getMes().then(function (res) {
+    });
+    /*var deffer = $q.defer();
+    deffer.resolve('success');
+    deffer.reject('error');
+    console.log(deffer)*/
+    $scope.logMes = function () {
+        console.log(111)
+    };
+    vm.list = [
+        {name:'10086'},{name:'10087'},{name:'10088'}
+    ];
+    angular.forEach(vm.list,function (item, index) {
+      item.$priceName = 'price' + index;
+      item.$singleName = 'single' + index;
+      item.$numberName = 'number' + index;
+    });
+    console.log(vm.list)
 });

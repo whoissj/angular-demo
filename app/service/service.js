@@ -26,3 +26,12 @@ app.service('treeService',function () {
        return items;
    };
 });
+app.factory('hello',function ($http,$q) {
+   return {
+       getMes:function () {
+           return  $http.get('api',{}).then(function (res) {
+             return  res.data.data;
+           });
+       }
+   }
+});

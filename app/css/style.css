@@ -5,6 +5,7 @@
 }
 #tree,#tree ul {
     list-style: none;
+    padding-left: 20px;
 }
 #tree span {
     font-weight: bold;

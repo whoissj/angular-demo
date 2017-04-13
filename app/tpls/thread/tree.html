@@ -22,7 +22,7 @@
         </li>
     </ul>
 </div>-->
-<div class="container">
+<div class="container panel panel-default form-group">
     <ul id="tree">
         <li ng-repeat="item1 in vm.items|treeFilter">
             <div ng-click="item1.$foldToggle()">
@@ -48,3 +48,70 @@
             </ul>
         </li>
     </ul>
+    <div>
+        <input type="button" class="btn btn-info" value="To Home" ui-sref="home">
+        <input type="button" class="btn btn-success" value="To List" ui-sref="thread.list">
+    </div>
+</div>
+<div class="container panel panel-primary form-group">
+    <label class="control-label">ctrl</label><input class="form-control" type="text" ng-model="myUrl">
+    <input class="form-control" type="text" ng-model="myText">
+    <div my-directive my-url="myUrl" my-text="百度" on-send="logMes()"></div>
+</div>
+<div class="container panel panel-primary form-group">
+    <label>someProperty = {{someProperty}}</label>
+    <input type="checkbox"
+           ng-checked="someProperty"
+           ng-init="someProperty = true"
+           ng-model="someProperty">
+</div>
+<div class="container panel panel-primary form-group">
+    <label>Select Two Fish:</label>
+    <input type="checkbox"
+           ng-model="isTwoFish"><br/>
+    <select>
+        <option>One Fish</option>
+        <option ng-selected="isTwoFish">Two Fish</option>
+    </select>
+</div>
+<div class="container panel panel-primary form-group">
+    <my-clock></my-clock>
+</div>
+<form class="container panel panel-primary form-group" name="form">
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>售价</th>
+                <th>单价</th>
+                <th>数量</th>
+                <th>操作</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="list in vm.list">
+                <td>
+                    <input class="form-control" type="text" name="price{{$index}}" ng-model="price" ng-pattern="/(^\d{0,5})+(\.\d{0,2})?$/" ng-required="true">
+                    <span ng-show="form['price' + $index].$error.required&&form['price' + $index].$dirty">此项必填</span>
+                    <span ng-show="form['price' + $index].$error.pattern&&form['price' + $index].$dirty">输入0-99999.99</span>
+                </td>
+                <td>
+                    <input class="form-control" type="text" name="single{{$index}}" ng-model="single" ng-pattern="/(^\d{0,5})+(\.\d{0,2})?$/" ng-required="true">
+                    <span ng-show="form['single' + $index].$error.required&&form['single' + $index].$dirty">此项必填</span>
+                    <span ng-show="form['single' + $index].$error.pattern&&form['single' + $index].$dirty">输入0-99999.99</span>
+                </td>
+                <td>
+                    <input class="form-control" type="number" name="number{{$index}}" ng-model="number" ng-pattern="/^\d{0,5}?$/" ng-required="true">
+                    <span ng-show="form['number' + $index].$error.required&&form['number' + $index].$dirty">此项必填</span>
+                    <span ng-show="form['number' + $index].$error.pattern&&form['number' + $index].$dirty">输入0-99999</span>
+                </td>
+                <td><input class="btn btn-primary btn-sm" type="button" value="提交"
+                   ng-disabled="form['price' + $index].$error.required||form['single' + $index].$error.required||form['number' + $index].$error.required
+                    ||form['price' + $index].$error.pattern||form['single' + $index].$error.pattern||form['number' + $index].$error.pattern"></td>
+            </tr>
+        </tbody>
+    </table>
+</form>
+<form class="container panel panel-primary form-group" name="form1">
+    <input class="form-control" type="text" ng-model="typein" required>
+    <input class="btn btn-primary btn-sm" type="button" value="提交" ng-disabled="form1.$invalid">
+</form>

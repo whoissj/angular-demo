@@ -20,9 +20,9 @@
         </thead>
         <tbody>
         <tr ng-repeat="item in vm.items|filter:vm.search|orderBy:vm.filter.order:vm.filter.direction|page:vm.paging.page:vm.paging.pageSize">
-            <td>{{item.title}}</td>
-            <td>{{item.poster}}</td>
-            <td>{{item.dateCreated|date:'yyyy-MM-dd'}}</td>
+            <td width="35%">{{item.title}}</td>
+            <td width="25%">{{item.poster}}</td>
+            <td width="40%">{{item.dateCreated|date:'yyyy-MM-dd'}}</td>
         </tr>
         </tbody>
     </table>
@@ -45,4 +45,8 @@
             </div>
         </div>
     </form>
+    <div>
+        <input type="button" class="btn btn-info" value="To Home" ui-sref="home">
+        <input type="button" class="btn btn-success" value="To Tree" ui-sref="thread.tree">
+    </div>
 </div>

@@ -5,6 +5,8 @@ app.directive('bfFieldError',function ($compile) {
         require:'ngModel',
         link:function (scope, element, attrs, ngModel) {
             var subScope = scope.$new(true);
+
+
             /*为什么这里用函数的返回值呢，而不是直接赋值呢。
             * 跟run.js里配置登录状态的跳转拦截一样。
             * */
@@ -59,4 +61,65 @@ app.directive('bfAssetSameAs',function () {
            )
        }
    }
+});
+app.directive('myDirective',function () {
+   return {
+       restrict:'A',
+       replace:true,
+       scope:{
+           myText:"@",
+           myUrl:"=",
+           onSend:'&'
+       },
+       template:'<div>' +
+                    '<label class="control-label">dire</label>' +
+                    '<div  class="panel-heading"><a href="{{myUrl}}">{{myText}}</a></div>' +
+                    '<input class="form-control" type="text" ng-model="myUrl">' +
+                    '<input class="form-control" type="text" ng-model="myText">' +
+                '</div>',
+       controller:function ($scope,$element,$attrs) {
+         console.log($scope);
+         console.log($element);
+         console.log($attrs);
+       },
+       link:function (scope, ele, attr) {
+           console.log(scope);
+           console.log(ele);
+           console.log(attr);
+           scope.onSend();
+       }
+   }
+})
+    .directive('myClock',function ($timeout) {
+        return {
+            restrict:'E',
+            replace:true,
+            scope:{},
+            template:'<p>{{date}}</p>',
+            controller:function ($scope) {
+                function getClock() {
+                    var clock = new Date().getFullYear() + '-' + new Date().getMonth() +'-'
+                        + new Date().getDate() + ' ' + new Date().getHours() + ':'
+                        + new Date().getMinutes() + ':' + new Date().getSeconds();
+                    return clock;
+                }
+                $scope.date = getClock();
+                var loop = function () {
+                    $timeout(function () {
+                        $scope.date = getClock();
+                        loop();
+                    },1000)
+                };
+                loop();
+            }
+        }
+    })
+.directive('myName',function () {
+    return {
+        restrict:'A',
+        require:'ngModel',
+        link:function (scope, ele, attrs, model) {
+            console.log(model)
+        }
+    }
 });

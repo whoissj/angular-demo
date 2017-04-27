@@ -6,3 +6,20 @@
 
 </div>
 
+<div class="form-group">
+    <input type="button" class="btn btn-primary" value="showHello" ng-click="showDisplay.showHello()">
+    <input type="button" class="btn btn-danger" value="showFuck" ng-click="showDisplay.showFuck()">
+</div>
+
+<div ng-show="vm.displayStyle() === 'hello'" class="panel panel-primary">
+    <div class="panel-heading">
+        hello,world
+    </div>
+</div>
+
+<div ng-show="vm.displayStyle() === 'fuck'" class="panel panel-danger">
+    <div class="panel-heading">
+        fuck you
+    </div>
+</div>
+

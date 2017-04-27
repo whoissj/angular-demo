@@ -1,5 +1,10 @@
 'use strict';
-app.controller('HomeCtrl',['$scope','$cookies','$rootScope','$state',function ($scope,$cookies,$rootScope,$state) {
+app.controller('HomeCtrl',['$scope','$cookies','$rootScope','$state','showDisplay',
+function ($scope,$cookies,$rootScope,$state,showDisplay) {
+
+    $scope.showDisplay = showDisplay;
+
+
     var vm = this;
     vm.home = {
         header:'THIS IS THE HOME!',
@@ -11,5 +16,9 @@ app.controller('HomeCtrl',['$scope','$cookies','$rootScope','$state',function ($
     };
     vm.goDeep = function () {
         $state.go('thread.list')
-    }
+    };
+    vm.displayStyle = function () {
+        return showDisplay.getStyle();
+    };
+
 }]);

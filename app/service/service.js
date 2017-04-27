@@ -35,3 +35,19 @@ app.factory('hello',function ($http,$q) {
        }
    }
 });
+app.factory('showDisplay',function () {
+    return {
+        displayStyle:'',
+        showHello:function () {
+            console.log('hello');
+            this.displayStyle = 'hello'
+        },
+        showFuck:function () {
+            console.log('fuck');
+            this.displayStyle = 'fuck'
+        },
+        getStyle:function () {
+            return this.displayStyle;
+        }
+    }
+});

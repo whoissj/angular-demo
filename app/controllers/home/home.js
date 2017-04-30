@@ -18,7 +18,7 @@ function ($scope,$cookies,$rootScope,$state,showDisplay) {
         $state.go('thread.list')
     };
     vm.displayStyle = function () {
-        return showDisplay.getStyle();
+        return showDisplay.getStyle() || 'hello';
     };
 
 }]);

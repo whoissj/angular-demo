@@ -54,9 +54,12 @@
     </div>
 </div>
 <div class="container panel panel-primary form-group">
-    <label class="control-label">ctrl</label><input class="form-control" type="text" ng-model="myUrl">
-    <input class="form-control" type="text" ng-model="myText">
-    <div my-directive my-url="myUrl" my-text="百度" on-send="logMes()"></div>
+    <label class="control-label">ctrl</label>
+    <input class="form-control form-group" type="text" ng-model="myUrl">
+    <input class="form-control form-group" type="text" ng-model="myText">
+
+
+    <div my-directive my-url="myUrl" my-text="{{myText}}" on-send="logMes()"></div>
 </div>
 <div class="container panel panel-primary form-group">
     <label>someProperty = {{someProperty}}</label>

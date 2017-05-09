@@ -73,16 +73,16 @@ app.directive('myDirective',function () {
        },
        template:'<div>' +
                     '<label class="control-label">dire</label>' +
-                    '<div  class="panel-heading"><a href="{{myUrl}}">{{myText}}</a></div>' +
-                    '<input class="form-control" type="text" ng-model="myUrl">' +
-                    '<input class="form-control" type="text" ng-model="myText">' +
+                    '<div><a href="{{myUrl}}">{{myText}}</a></div>' +
+                    '<input class="form-control form-group" type="text" ng-model="myUrl">' +
+                    '<input class="form-control form-group" type="text" ng-model="myText">' +
                 '</div>',
-       controller:function ($scope,$element,$attrs) {
+       controller:function ($scope,$element,$attrs) { //参数的顺序无关，名字才有关
          console.log($scope);
          console.log($element);
          console.log($attrs);
        },
-       link:function (scope, ele, attr) {
+       link:function (scope, ele, attr) { //参数的名字无关，顺序才有关
            console.log(scope);
            console.log(ele);
            console.log(attr);
